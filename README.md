@@ -1,0 +1,2 @@
+# nonrepeatedvowelafterconsonant
+Exercício Java
