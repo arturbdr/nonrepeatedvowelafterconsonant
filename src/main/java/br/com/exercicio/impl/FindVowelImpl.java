@@ -128,10 +128,10 @@ public class FindVowelImpl implements FindVowelAPI {
 							// Inclui a vogal no Map como possivel candidata
 							vowelsFounded.put(currentCharecter, STATUS_VOGAL.CANDIDATE);
 						}
-						// Siginifica que a voga foi descartada pois embora tenha sido encontrada apenas uma vez no Stream ate esse momento,
+						// Siginifica que a vogal foi descartada pois embora tenha sido encontrada apenas uma vez no Stream ate esse momento,
 						// o caracter anterior nao e uma constante
 						else {
-							// Significa que como a voga ja apareceu na Stream e seu caracter anterior nao e uma consoante, ela esta automaticamente descartada
+							// Significa que como a vogal ja apareceu na Stream e seu caracter anterior nao e uma consoante, ela esta automaticamente descartada
 							vowelsFounded.put(currentCharecter, STATUS_VOGAL.DISCARTED);
 							
 							// Remove das vogais candidatas
