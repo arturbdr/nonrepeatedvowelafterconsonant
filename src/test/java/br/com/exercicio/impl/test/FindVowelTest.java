@@ -1,15 +1,19 @@
-package br.com.exercicio.api;
+package br.com.exercicio.impl.test;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.exercicio.api.FindVowelAPI;
 import br.com.exercicio.impl.FindVowelImpl;
 import br.com.exercicio.impl.StreamStringImpl;
 import br.com.exercicio.messageutil.PropertiesReader;
 import br.com.exercicio.test.builder.FindVowelBuilder;
 
+/**
+ * Classe de teste referente a classe FindVowel
+ */
 public class FindVowelTest {
 	
 	private PropertiesReader propertiesReader;
@@ -231,11 +235,11 @@ public class FindVowelTest {
 	
 	
 	@Test
-	public void shouldNotMatchEarlier() {
+	public void shouldMatchEarlier() {
 		// Esse teste visa acabar com todas as possibilidades de vogais logo no começo do teste.
 		// A implementacao feita visa essa melhoria de performance nao onerando o processamento desnecessariamente
 		
-		String extenseStream1 = "aeiouAEIOU nao ha mais opcoes de vogal e o stream nao será mais lido!^T^VdaW  qzXc,#$¨(&*%(#qpri´wuc,pot,´wpViqru,mxVORTUMP VROCWPV"
+		String extenseStream1 = "aeiouAEIOUáéíóúÁÉÍÓÚâêîôûÂÊÎÔÛãõÃÕàèìòùÀÈÌÒÙ nao ha mais opcoes de vogal e o stream nao será mais lido!^T^VdaW  qzXc,#$¨(&*%(#qpri´wuc,pot,´wpViqru,mxVORTUMP VROCWPV"
 				+ "CWVPCOMWUP   56351618 !a! - VORPIGJWVPRGOIVWRKGCPIC!! 04(())()(OIUVOIUOIUCOVIUVOIUVpoiVpoVoiVu1Ta"
 				+ "!^T^VdaW  qzXc,#$¨(&*%(#qpri´wuc,pot,´wpViqru,mxVORTUMP VROCWPVCWVPCOMWUP   56351618 !a! - VORPIGJWVPRGOIVWRKGCPIC!! 04(())()(OIUVOIUOIUCOVIUVOIUVpoiVpoVoiVu1Ta"
 				+ "!^T^VdaW  qzXc,#$¨(&*%(#yjfujfuj´wuc,pot,´wpViqru,mxVORTUMP VROCjyfujfyujfyujWPVCWVPCOMWUP   56351618 !a! - VORPIGJWVPRGOIVWRKGCPIC!! 04(())()(OIUVOIUOIUCOVIUVOIUVpoiVpoVoiVu1Ta"
@@ -256,6 +260,28 @@ public class FindVowelTest {
 		FindVowelImpl findVowel = findVowelBuilder.build();
 		
 		assertEquals(propertiesReader.getProperty(FindVowelAPI.MENSAGEM_ERRO_NAOLOCALIZADO), findVowel.searchVowel());
+	}
+	
+	
+	@Test
+	public void shouldNotMatchDueToWhiteSpaces(){
+		
+		// Cria Streams com espaços em branco e espaços em branco e vogais. 
+		// Todos não localizarao a vogal e por isso foram agrupados em um unico teste unitario
+		String whiteSpaceStream1 = "         "; 	// nao localizar
+		String whiteSpaceStream2 = "    a   A  f  e  "; 	// nao localizar
+		
+		
+		findVowelBuilder.withPropertiesReader(propertiesReader);
+		findVowelBuilder.withStreamAPI(new StreamStringImpl(whiteSpaceStream1));
+		FindVowelImpl findVowel1 = findVowelBuilder.build();
+		
+		findVowelBuilder.withStreamAPI(new StreamStringImpl(whiteSpaceStream2));
+		FindVowelImpl findVowel2 = findVowelBuilder.build();
+		
+		assertEquals(propertiesReader.getProperty(FindVowelAPI.MENSAGEM_ERRO_NAOLOCALIZADO), findVowel1.searchVowel());
+		assertEquals(propertiesReader.getProperty(FindVowelAPI.MENSAGEM_ERRO_NAOLOCALIZADO), findVowel2.searchVowel());
+		
 	}
 	
 }

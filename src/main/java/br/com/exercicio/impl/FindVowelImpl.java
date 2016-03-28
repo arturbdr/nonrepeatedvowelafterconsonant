@@ -42,7 +42,7 @@ public class FindVowelImpl implements FindVowelAPI {
 		this.propertiesReader = propertiesReader;
 		this.input = input;
 
-		// Fail Fast pattern - Realiza as validacoes o quanto antes para que nao evitar um processamento que ira falha desnecessario
+		// Fail Fast pattern - Realiza as validacoes o quanto antes para que evitar um processamento que ira falha.
 		validatePropetiesFile();
 		validateStreamInput();
 	}
@@ -55,13 +55,13 @@ public class FindVowelImpl implements FindVowelAPI {
 	 */
 	private Set<Character> createCandidateVowels(String candidateVowels) {
 		
-		Set <Character> vogaisUnicas = new HashSet<Character>();
+		Set <Character> uniqueVowels = new HashSet<Character>();
 		
 		for (int i = 0; i < candidateVowels.length(); i++){
 		    char c = candidateVowels.charAt(i);        
-		    vogaisUnicas.add(c);
+		    uniqueVowels.add(c);
 		}
-		return vogaisUnicas;
+		return uniqueVowels;
 	}
 	
 	/**
@@ -163,7 +163,7 @@ public class FindVowelImpl implements FindVowelAPI {
 
 		// Significa que nao foram encontradas vogais que atendam aos requisitos
 		return propertiesReader.getProperty(MENSAGEM_ERRO_NAOLOCALIZADO);
-	}; 
+	} 
 
 	/**
 	 * Valida se o arquivo de properties esta preenchido e possui os parametros necessarios

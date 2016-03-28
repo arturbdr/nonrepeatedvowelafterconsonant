@@ -33,13 +33,13 @@ public class StreamStringImpl implements StreamAPI {
 	}
 
 	@Override
-	public Character getNext() {
+	public char getNext() {
 		if (hasNext()) {
 			//retorna o proximo elemento da Stream e incrementa o contador de posicoes
 			return this.charStream.charAt(stringPosition++);
 		}
 		else {
-			return null;
+			return '\0';
 		}
 	}
 

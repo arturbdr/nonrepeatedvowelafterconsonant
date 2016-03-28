@@ -6,7 +6,7 @@ import br.com.exercicio.messageutil.PropertiesReader;
 
 /**
  * Classe para facilitar a Criacao de FindVowel
- * Design Pattern - Test Data Builders
+ * Design Pattern - Test Data Builder
  */
 public class FindVowelBuilder {
 	
