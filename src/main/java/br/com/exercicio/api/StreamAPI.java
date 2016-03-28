@@ -7,7 +7,7 @@ public interface StreamAPI {
 	
 	/**
 	 * Uma chamada para getNext() ira retornar o proximo caracter a ser processado na Stream
-	 * @return <b>Character</b> representando o proximo caracter na Stream. <br/><b>null</b> caso nao exite mais caracteres a serem lidos 
+	 * @return <b>char</b> representando o proximo caracter na Stream. <br/><b>0</b> caso nao exita mais caracteres a serem lidos 
 	 */
 	public char getNext();
 
