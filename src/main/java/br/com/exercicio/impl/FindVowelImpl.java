@@ -166,7 +166,7 @@ public class FindVowelImpl implements FindVowelAPI {
 	} 
 
 	/**
-	 * Valida se o arquivo de properties esta preenchido e possui os parametros necessarios
+	 * Valida se o arquivo de properties foi enviado
 	 */
 	private void validatePropetiesFile() {
 		if (this.propertiesReader == null) {
